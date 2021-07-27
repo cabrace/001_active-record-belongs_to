@@ -146,7 +146,7 @@ We **still can** attach a `Book` in the Author-Form-View(app/views/author_form.h
 > Update the view:
 
 ```
-# Reference section 2.4 above
+# Update the view to match section 2.4 above
 ```
 ##### Update allowed Params
 >  Update the Controller
@@ -185,7 +185,6 @@ b.author
 > Above we see the reverse, where we have selected a book and see the corresponding author
 
 
-
 #### Additional Stuff
 
 ##### Clearing DB or Seeding Data for testing
@@ -206,6 +205,6 @@ rails:db:reset
 #This will drop all tables_records, recreate the schema and then load the seeds file
 ```
 ##### References
-###### [Collection Selection](https://theresamorelli.medium.com/collection-select-what-the-heck-4e1cabc4be4b)
-###### [Creating a Seed file from existing data](https://medium.com/railstips/create-seed-file-from-data-already-in-database-in-rails-660e5ab92b5)
-###### [Seed Dump ^^](https://github.com/rroblak/seed_dump)   
+-  [Collection Selection](https://theresamorelli.medium.com/collection-select-what-the-heck-4e1cabc4be4b)
+-  [Creating a Seed file from existing data](https://medium.com/railstips/create-seed-file-from-data-already-in-database-in-rails-660e5ab92b5)
+-  [Seed Dump ^^](https://github.com/rroblak/seed_dump)   
