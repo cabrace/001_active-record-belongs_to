@@ -4,9 +4,9 @@
 Active Record :  
 -----
 #### has_many <---> belongs_to
-> In the Demo project we are exploring the associative relationship between two models where: \
-> `Author` **has_many :books** and a `Book` **belongs_to :author** \
-> Here both the `Book` and `Author` are models that have a bi-directional relationship that will be explored.
+In the Demo project we are exploring the associative relationship between two models where: \
+`Author` **has_many :books** and a `Book` **belongs_to :author** \
+Here both the *Book* and *Author* are models that have a bi-directional relationship that will be explored.
 
 Here is what the two models will look like initially when creating from scratch:
 ```ruby
@@ -32,17 +32,22 @@ go to -->  http://localhost:3000 and test the has_many belongs_to functionality.
 
 ### 2. Create from Scratch
 
-> Create project skipping Action Mailer(-M) and Testing(-T)  \
-> Generate the Book model along with assosciated scaffolding.  \
-> Generate the Author model along with associated scaffolding.  \
+1. Create project skipping Action Mailer(-M) and Testing(-T)
+2. Generate the `Book` model along with assosciated scaffolding  
+3. Generate the `Author` model along with associated scaffolding
+4. Add the necessary relations in the `Model`
+5. Update the `views` accordingly
 
 #### 2.1 Setup the Project folder and generate a few Models from Scaffolding
 ```
 rails new belongs_to -M -T 
+```
+#### 2.2 Generate the Scaffold for the entire MVC setup.
+```
 rails g scaffold Book title:string author:references 
 rails g scaffold Author name:string
 ```
-#### 2.2 Edit the Model files to create the bi-drirectional associative relationship between them:
+#### 2.3 Edit the Model files to create the bi-drirectional associative relationship between them:
 
 ```ruby
 # /app/models/author.rb
@@ -55,10 +60,10 @@ class Book < ApplicationRecord
  belongs_to :author
 end
 ```
-> Generally any model that has a `belongs_to` section, also has a Foreign Key(FK) from the table it belongs to in it as a reference.  
-> So here the `Book` model has an **:author_id** as a FK in its table in the DB.
+Generally any model that has a `belongs_to` section, also has a Foreign Key(FK) from the table it belongs to in it as a reference.  
+So here the `Book` model has an **:author_id** as a FK in its table in the DB.
 
-#### 2.3. Edit the View files to make it easier to add data from one model or another:
+#### 2.4. Edit the View files to make it easier to add data from one model or another:
 
 ```erb
 <!-- /app/views/books/_form.html.erb -->
@@ -79,7 +84,7 @@ end
   </div>
 ...
 ```
-#### 2.4 (Complete form)
+#### 2.5 (Complete form)
 
 ```erb
 <!-- /app/views/books/_form.html.erb -->
@@ -111,9 +116,9 @@ end
   </div>
 <% end %>
 ```
-> Doing the above will allow us to **SELECT** from a list of Authors already entered on the author_create path.  
-> That's all that must be done in order to attach a dropdown select of an Author on a Book-View.  
-> From here make sure the DB is migrated with the following and start the server. 
+Doing the above will allow us to **SELECT** from a list of Authors already entered on the author_create path.  
+That's all that must be done in order to attach a dropdown select of an Author on a Book-View.  
+From here make sure the DB is migrated with the following and start the server. 
 
 ```
 rails:db:migrate
@@ -135,22 +140,22 @@ We **still can** attach a `Book` in the Author-Form-View(app/views/author_form.h
 
 #### Things Encountered Along the way
 ##### Migrations  
-> Initially when creating this I didnt create a Title property for the Book model, but no problem it's easy to generate a migration
+Initially when creating this I didnt create a Title property for the Book model, but no problem it's easy to generate a migration
 ```
  rails g migration add_column_title_to_book title:string
  rails db:migrate
 ```
-> This automagically creates a migration for adding a title column in the Book schema.
+This automagically creates a migration for adding a title column in the Book schema.
 
 ##### After Migration 
-> Update the view:
+Update the view:
 
 ```
 # Update the view to match section 2.4 above
 ```
 ##### Update allowed Params
->  Update the Controller
-app/controllers/books_controller.rb
+Update the Controller
+> app/controllers/books_controller.rb
 
 ```ruby
   # From
@@ -164,25 +169,25 @@ app/controllers/books_controller.rb
     params.require(:book).permit(:author_id, :title)
   end
 ```
-> This allows the params to be passed through correctly
+This allows the params to be passed through correctly
 
 ##### In the Console 
-> commands are as follows
-> once data has already been entered:
+commands are as follows
+once data has already been entered:
 
 ```
 # Get the first author and display their related books
 a = Author.first
 a.books
 ```
-> Above shows the related books based on a seclected author.
+The above shows the related books based on a seclected author.
 
 ```
 # Get the first Book and see its corresponding Author
 b = Book.first
 b.author
 ```
-> Above we see the reverse, where we have selected a book and see the corresponding author
+Above we see the reverse, where we have selected a book and see the corresponding author
 
 
 #### Additional Stuff
