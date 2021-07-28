@@ -124,7 +124,7 @@ From here make sure the DB is migrated with the following and start the server.
 rails:db:migrate
 rails s
 ```
-----
+
 Understanding
 ----
 Note here the direction of the association of using an already existing `author_id` being attached to the `/app/views/book/_form.erb` View, as `Book` references its parent `Author` through the `author_id` which is attached when selected from the dropdown in the Book-Form-View. 
@@ -138,8 +138,10 @@ Overall this means an `author_id` **must exist before** a book can be saved as a
 We **still can** attach a `Book` in the Author-Form-View(app/views/author_form.html.erb); and as indicated [here](https://medium.com/@onyoo/why-accepts-nested-attributes-for-6ed190def58a), there is a cleaner solution which involves the using of a in-built helper `accepts_nested_attributes_for` on the Model, which will save us from a lot of extra coding in other places. This is just noted here for a post in the future about this topic.
 
 
-#### Things Encountered Along the way
-##### Migrations  
+Things Encountered Along the way
+----
+
+#### Migrations  
 Initially when creating this I didnt create a Title property for the Book model, but no problem it's easy to generate a migration
 ```
  rails g migration add_column_title_to_book title:string
@@ -147,7 +149,7 @@ Initially when creating this I didnt create a Title property for the Book model,
 ```
 This automagically creates a migration for adding a title column in the Book schema.
 
-##### After Migration 
+#### After Migration 
 Update the view:
 
 ```
@@ -171,7 +173,8 @@ Update the Controller
 ```
 This allows the params to be passed through correctly
 
-##### In the Console 
+In the Console
+-----
 commands are as follows
 once data has already been entered:
 
@@ -190,9 +193,10 @@ b.author
 Above we see the reverse, where we have selected a book and see the corresponding author
 
 
-#### Additional Stuff
+Additional Stuff
+-----
 
-##### Clearing DB or Seeding Data for testing
+#### Clearing DB or Seeding Data for testing
 So I had already created the data using the Rails UI; however I wanted to then create a SEED file from the already existing data;
 Well thats the gist of doing it anyway however installed the `seed_dump` `gemfile`, did bundle install and ran:
 
