@@ -22,11 +22,13 @@ end
 
 ```
 git clone https://github.com/cabrace/belongs_to.git
-cd belongs_to
-rails:db:reset
+cd active-record-belongs_to
+yarn install
 rails db:migrate
+rails db:seed 
 rails s 
 ```
+The above clones the application, installs JS packages, migrates the DB, seeds the DB and then runs the server
 go to -->  http://localhost:3000 and test the has_many belongs_to functionality.
 
 
