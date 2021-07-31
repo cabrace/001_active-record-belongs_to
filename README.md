@@ -49,6 +49,9 @@ rails new belongs_to -M -T
 rails g scaffold Book title:string author:references 
 rails g scaffold Author name:string
 ```
+This scaffolding section does a lot of stuff for us, but primarily here we are just focused on the `Book` model which has a reference to `Author`,
+and the `Author` just has a name field for a column, which is of type string.
+
 #### 2.3 Edit the Model files to create the bi-drirectional associative relationship between them:
 
 ```ruby
