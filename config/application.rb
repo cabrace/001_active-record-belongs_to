@@ -34,5 +34,8 @@ module BelongsTo
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    #Set Profiler position to bottom-left
+    Rack::MiniProfiler.config.position = 'bottom-left'
   end
 end
