@@ -7,7 +7,6 @@ module ApplicationHelper
 
   #Take your pick: these two do the same thing!
   def is_active?(current_page)
-    p params
-    return "is-active has-text-primary" if params[:controller] == current_page.to_s
+    return "is-active" if params[:controller] == current_page.to_s
   end
 end
