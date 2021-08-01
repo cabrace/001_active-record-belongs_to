@@ -1,9 +1,9 @@
-//.table.is-borderless{
-  //border:0 !important;
-  //border: 1px solid red;
-//}
+.table.is-borderless{
+  border:0 !important;
+  border: 1px solid red;
+}
 
-// Set your brand colors
+ //Set your brand colors
 $purple: #8A4D76;
 $purple-1: #8a4d762b;
 $pink: #FA7C91;
@@ -33,4 +33,4 @@ $input-shadow: none;
 }
 
 
-@import "bulma"
+@import "bulma";
