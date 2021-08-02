@@ -1,5 +1,5 @@
 {
-  "name": "belongs-to",
+  "name":"rails001_active_record_belongs_to",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
